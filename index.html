@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إدخال الاسم و ID والصورة</title>
+    <style>
+        body {
+            font-family: Arial;
+            direction: rtl;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        img {
+            max-width: 200px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>أدخل بياناتك</h2>
+
+        <label>الاسم:ibrahim adeeb alrajhi</label><br>
+        <input id="nameInput" type="text" placeholder="اكتب اسمك"><br><br>
+
+        <label>ID:202509429</label><br>
+        <input id="idInput" type="text" placeholder="اكتب الـ ID"><br><br>
+
+        <label>:</label><br>
+        <input id="imgInput" type="file" accept="image/*"><br><br>
+
+        <button onclick="showInfo()">عرض البيانات</button>
+
+        <h3>النتيجة:</h3>
+        <p id="nameResult"></p>
+        <p id="idResult"></p>
+        <img id="imgPreview">
+    </div>
+
+
+    <script>
+        function showInfo() {
+            // عرض الاسم والـID
+            document.getElementById("nameResult").innerText =
+                "الاسم: " + document.getElementById("nameInput").value;
+
+            document.getElementById("idResult").innerText =
+                "ID: " + document.getElementById("idInput").value;
+
+            // عرض الصورة
+            const file = document.getElementById("imgInput").files[0];
+            if (file) {
+                const preview = document.getElementById("imgPreview");
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
